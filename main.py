@@ -1,1 +1,1 @@
-from tarea import Tarea
+from archivo import *
