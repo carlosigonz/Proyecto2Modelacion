@@ -1,6 +1,6 @@
 class Tarea:
     def __init__(self, numero, descripcion, duracion, predecesor):
-        self.nombre = numero
+        self.numero = numero
         self.descripcion = descripcion
         self.duracion = duracion
         self.predecesor = predecesor
