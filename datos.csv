@@ -1,8 +1,8 @@
-﻿A,6,-
-B,4,-
-C,3,A
-D,4,B
-E,3,B
-F,10,-
-G,3,"E,F"
-H,2,"C,D"
+﻿A,Quitar Ceramicas,2,-
+B,Instalar Cableado,3,A
+C,Instalar Calentador,1,"B,E"
+D,Instalar Bomba,2,E
+E,Instalar Tuberias,2,A
+F,Instalar Jacuzzi,2,"C,D"
+G,1,F
+
