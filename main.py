@@ -1,22 +1,6 @@
 from archivo import *
 from tarea import *
 
-def leer():
-	csv_file = open('Tareas.csv', 'r')
-	csv_file_reader = csv.reader(csv_file, delimiter=',')
-
-	for row in csv_file_reader:
-    
-    #print(f'el id es: {row[0]}')
-		#id = int(row[0])
-		descripcion = row[1]
-		duracion = int(row[2])
-		predecesores_id = enlistar_predecesores(row[3])
-		tarea = Tarea(id, descripcion, duracion, predecesores_id)
-		tareas[id] = tarea
-		
-	return tareas
-
 def enlistar_predecesores(ids_predecesores_string):
     ids_predecesores = []
     ids_predecesores = ids_predecesores_string.split(',')
@@ -27,19 +11,12 @@ def enlistar_predecesores(ids_predecesores_string):
 
 
 def main():
-    leer()
-
+    # leer_tareas('datos.csv')
+    leer_tareas('datos2.csv')
+    # leer_tareas('parcial.csv')
     ruta_critica = []
     lista_tareas = []
 
-    tareas = {1: Tarea(1, "A", 2, []),
-              2: Tarea(2, "B", 3, [1]),
-              3: Tarea(3, "E", 2, [1]),
-              4: Tarea(4, "C", 1, [2,3]),
-              5: Tarea(5, "D", 3, [3]),
-              6: Tarea(6, "F", 2, [4,5]),
-              7: Tarea(7, "G", 2, [6])
-              }
     def ordenar_tareas(tareas, is_reverse=False):
         tareas_ordenadas = []
 
@@ -88,13 +65,24 @@ def main():
         else:
             print("Esta actividad no tiene holgura")
 
-    ruta = "\n-La ruta crítica es: "
+    ruta = "\n-La ruta crítica es: \n"
+    contador = 1
     for i in ruta_critica[::-1]:
         if i.final_tardio == ruta_critica[0].final_tardio:
-            ruta = ruta +(f"{i.descripcion}.")
+            ruta = ruta +(f"Tarea: {contador}. {i.descripcion}.")
         else:
-            ruta = ruta+(f"{i.descripcion}, ")
+            ruta = ruta+(f"Tarea: {contador}. {i.descripcion} \n")
+            contador +=1
     print(ruta)
     print("-Duración máxima de días: ", ruta_critica[0].final_tardio, " días")
 
 main()
+
+ # tareas = {1: Tarea(1, "A", 2, []),
+    #           2: Tarea(2, "B", 3, [1]),
+    #           3: Tarea(3, "E", 2, [1]),
+    #           4: Tarea(4, "C", 1, [2,3]),
+    #           5: Tarea(5, "D", 3, [3]),
+    #           6: Tarea(6, "F", 2, [4,5]),
+    #           7: Tarea(7, "G", 2, [6])
+    #           }
