@@ -1,5 +1,8 @@
 from archivo import *
 from tarea import *
+import networkx as nx
+import matplotlib.pyplot as plt
+from grafo import *
 
 def enlistar_predecesores(ids_predecesores_string):
     ids_predecesores = []
@@ -11,8 +14,8 @@ def enlistar_predecesores(ids_predecesores_string):
 
 
 def main():
-    # leer_tareas('datos.csv')
-    leer_tareas('datos2.csv')
+    leer_tareas('datos.csv')
+    #leer_tareas('datos2.csv')
     # leer_tareas('parcial.csv')
     ruta_critica = []
     lista_tareas = []
@@ -74,7 +77,21 @@ def main():
             ruta = ruta+(f"Tarea: {contador}. {i.descripcion} \n")
             contador +=1
     print(ruta)
-    print("-Duración máxima de días: ", ruta_critica[0].final_tardio, " días")
+    print("\n-Duración máxima de días: ", ruta_critica[0].final_tardio, "días")
+
+    G = nx.Graph()
+
+    G.add_nodes_from(leerNodos("datos.csv"))
+    print(leerNodos("datos.csv"))
+    lista_aristas = leerAristas("datos.csv")
+    lista_aristas.pop(0)
+    for arista in lista_aristas:
+        G.add_edge(arista[0],arista[1])
+
+    pos = nx.planar_layout(G)
+
+    nx.draw(G,pos,with_labels = True)
+    plt.show()
 
 main()
 
