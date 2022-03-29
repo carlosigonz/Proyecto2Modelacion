@@ -17,7 +17,7 @@ def leer_tareas(archivo):
             duracion = int(duracion)
             #Encontrar manera de leer varias rutas
             #Diccionario??
-            predec = row[3]
+            predec = predec_ids(row[3])
             nueva_tarea = Tarea(identif,descrip,duracion,predec)
             tareas[nueva_tarea.numero] = nueva_tarea
             lista_tareas.append(identif)
@@ -26,3 +26,12 @@ def leer_tareas(archivo):
             grafo.append([0] * (len(grafo) + 1))
             indice_tareas[nueva_tarea] = len(indice_tareas)
             cuenta += 1
+
+def predec_ids(id):
+
+    lista_ids= []
+    predec_ids_string = id.split(',')
+    for id in predec_ids_string:
+        if predec_ids_string != '':
+            lista_ids.append(predec_ids_string)
+    return lista_ids
