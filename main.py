@@ -19,10 +19,15 @@ def leer():
 
 def enlistar_predecesores(ids_predecesores_string):
     ids_predecesores = []
-    ids_predecesores = 
+    ids_predecesores = ids_predecesores_string.split(',')
+    for id_predecesor in ids_predecesores:
+        if id_predecesor != '':
+            ids_predecesores.append(int(id_predecesor))
+    return ids_predecesores
 
 
 def main():
+    leer()
 
     ruta_critica = []
     lista_tareas = []
