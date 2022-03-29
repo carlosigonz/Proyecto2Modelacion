@@ -1,5 +1,27 @@
 from archivo import *
 from tarea import *
+
+def leer():
+	csv_file = open('Tareas.csv', 'r')
+	csv_file_reader = csv.reader(csv_file, delimiter=',')
+
+	for row in csv_file_reader:
+    
+    #print(f'el id es: {row[0]}')
+		#id = int(row[0])
+		descripcion = row[1]
+		duracion = int(row[2])
+		predecesores_id = enlistar_predecesores(row[3])
+		tarea = Tarea(id, descripcion, duracion, predecesores_id)
+		tareas[id] = tarea
+		
+	return tareas
+
+def enlistar_predecesores(ids_predecesores_string):
+    ids_predecesores = []
+    ids_predecesores = 
+
+
 def main():
 
     ruta_critica = []
