@@ -1,0 +1,7 @@
+1,Quitar Ceramicas,2,
+2,Instalar Cableado,3,1
+3,Instalar Tuberias,2,1
+4,Instalar Calentador,1,"2,3"
+5,Instalar Bomba,2,3
+6,Instalar Jacuzzi,2,"4,5"
+7,Pruebas y Ajustes,1,6
